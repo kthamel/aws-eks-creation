@@ -42,7 +42,7 @@ pipeline {
 
         stage ('Invoke Downstream Pipeline') {
             steps {
-                build job: 'pipeline-eks-application', wait: false
+                build job: 'pipeline-eks-application', wait: true
             }
         }
     }
