@@ -38,13 +38,5 @@ pipeline {
                 }
             }
         }
-
-        stage('Terraform destroy') {
-            steps {
-                dir('eks_configuration') {
-                    sh 'terraform destroy --auto-approve'
-                }
-            }
-        }
     }
 }
