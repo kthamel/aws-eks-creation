@@ -49,10 +49,10 @@ resource "aws_eks_node_group" "master-nodes" {
   scaling_config {
     desired_size = 2
     min_size     = 0
-    max_size     = 3
+    max_size     = 5
   }
   update_config {
-    max_unavailable = 1
+    max_unavailable = 2
   }
   labels = {
     node_type = "controlplane"
@@ -76,10 +76,10 @@ resource "aws_eks_node_group" "private-nodes" {
   scaling_config {
     desired_size = 2
     min_size     = 0
-    max_size     = 3
+    max_size     = 5
   }
   update_config {
-    max_unavailable = 1
+    max_unavailable = 2
   }
   labels = {
     node_type = "workers"
