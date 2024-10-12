@@ -30,6 +30,7 @@ resource "aws_iam_role_policy_attachment" "kthamel-eks-cluster-iam-role-policy" 
 
 resource "aws_eks_cluster" "kthamel-eks-cluster" {
   name     = "kthamel-eks-cluster"
+  platform_version = "1.31"
   role_arn = aws_iam_role.kthamel-eks-cluster-iam-role.arn
 
   vpc_config {
