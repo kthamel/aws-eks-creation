@@ -20,9 +20,29 @@ pipeline {
             }
         }
 
-        stage('Terraform apply') {
+        stage('Request Approval') {
+            steps {
+                script {
+                   timeout(time: 1, unit: 'HOURS') {
+                        approvalStatus = input message: 'Are you sure? ', ok: 'Submit', parameters: [choice(choices: ['Approved', 'Rejected'], name: 'ApprovalStatus')], submitter: 'user1,user2', submitterParameter: 'approverID'
+                   }
+                }
+                echo "Approval status: ${approvalStatus}"
+            }
+        }
+
+        stage('Terraform Apply') {
+            when {
+                expression { approvalStatus["ApprovalStatus"] == 'Approved' }
+            }
             steps {
                 sh 'terraform apply --auto-approve'
+            }
+        }
+
+        stage ('Invoke Downstream Pipeline') {
+            steps {
+                build job: 'pipeline-eks-application', wait: false
             }
         }
     }
