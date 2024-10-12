@@ -40,10 +40,9 @@ resource "aws_eks_node_group" "master-nodes" {
   node_role_arn   = aws_iam_role.kthamel-eks-nodes-iam-role.arn
 
   subnet_ids = [
-    aws_subnet.kthamel-eks-subnet-1.id,
-    aws_subnet.kthamel-eks-subnet-2.id,
-    aws_subnet.kthamel-eks-subnet-3.id
-  ]
+      "subnet-018bc20e7d040c324",
+      "subnet-01a00135b18b64a72"
+    ]
 
   capacity_type  = "ON_DEMAND"
   instance_types = ["t2.medium"]
@@ -68,10 +67,9 @@ resource "aws_eks_node_group" "private-nodes" {
   node_role_arn   = aws_iam_role.kthamel-eks-nodes-iam-role.arn
 
   subnet_ids = [
-    aws_subnet.kthamel-eks-subnet-1.id,
-    aws_subnet.kthamel-eks-subnet-2.id,
-    aws_subnet.kthamel-eks-subnet-3.id
-  ]
+      "subnet-018bc20e7d040c324",
+      "subnet-01a00135b18b64a72"
+    ]
 
   capacity_type  = "ON_DEMAND"
   instance_types = ["t2.medium"]
