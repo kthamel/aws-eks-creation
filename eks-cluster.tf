@@ -34,8 +34,10 @@ resource "aws_eks_cluster" "kthamel-eks-cluster" {
 
   vpc_config {
     subnet_ids = [
-      "subnet-018bc20e7d040c324",
-      "subnet-01a00135b18b64a72"
+      "subnet-0ebbeb2b84570d2bb",
+      "subnet-0a0d8037b2051a470",
+      "subnet-025d011a84e801ae7",
+      "subnet-0dedaaf475b652bdc"
     ]
   }
   depends_on = [aws_iam_role_policy_attachment.kthamel-eks-cluster-iam-role-policy]
